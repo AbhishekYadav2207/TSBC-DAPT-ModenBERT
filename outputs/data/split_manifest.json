@@ -1,0 +1,38 @@
+{
+  "split_seed": 42,
+  "ratios": {
+    "train": 0.9,
+    "val": 0.05,
+    "test": 0.05
+  },
+  "document_counts": {
+    "train": 87043,
+    "val": 4835,
+    "test": 4837,
+    "total": 96715
+  },
+  "word_counts": {
+    "train": 3033940,
+    "val": 169743,
+    "test": 169199
+  },
+  "file_paths": {
+    "train": "D:\\CAIR\\TSBC-Pipeline\\dapt\\outputs\\data\\train.txt",
+    "val": "D:\\CAIR\\TSBC-Pipeline\\dapt\\outputs\\data\\val.txt",
+    "test": "D:\\CAIR\\TSBC-Pipeline\\dapt\\outputs\\data\\test.txt"
+  },
+  "leakage_diagnostics": {
+    "exact_duplicate_leakage": {
+      "train_val_overlap": 0,
+      "train_test_overlap": 0,
+      "val_test_overlap": 0
+    },
+    "near_duplicate_leakage_diagnostic": {
+      "sample_evaluated": 2000,
+      "val_high_shingle_overlap_count": 1091,
+      "val_high_shingle_overlap_rate": 0.5455,
+      "test_high_shingle_overlap_count": 1115,
+      "test_high_shingle_overlap_rate": 0.5575
+    }
+  }
+}

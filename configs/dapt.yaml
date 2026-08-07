@@ -1,0 +1,52 @@
+# ModernBERT Domain-Adaptive Pretraining (DAPT) Configuration
+# Pipeline: MaritimeBERT-v1
+
+model:
+  name_or_path: "answerdotai/ModernBERT-base"
+  tokenizer_name_or_path: null
+  trust_remote_code: false
+
+data:
+  corpus_path: "outputs/maritime_corpus.txt"
+  output_dir: "dapt/outputs/data"
+  train_split: 0.90
+  validation_split: 0.05
+  test_split: 0.05
+  split_seed: 42
+  max_seq_length: 512
+  packing: true
+  deduplicate: false
+  shuffle: true
+
+training:
+  output_dir: "dapt/outputs/experiments/MaritimeBERT-v1"
+  checkpoints_dir: "dapt/checkpoints"
+  seed: 42
+  num_train_epochs: 3
+  max_steps: -1
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 4
+  learning_rate: 5.0e-05
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  lr_scheduler_type: "linear"
+  fp16: false
+  bf16: false
+  gradient_checkpointing: false
+  logging_steps: 10
+  eval_steps: 50
+  save_steps: 100
+  save_total_limit: 3
+
+mlm:
+  mlm_probability: 0.15
+
+evaluation:
+  enabled: true
+  eval_steps: 50
+  save_metrics: true
+
+system:
+  device: "auto"
+  num_workers: 2

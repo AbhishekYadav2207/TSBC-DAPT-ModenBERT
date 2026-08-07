@@ -1,0 +1,13 @@
+{
+  "baseline_model": "answerdotai/ModernBERT-base",
+  "dapt_model": "/content/drive/MyDrive/TSBC-Pipeline/dapt/outputs/experiments/MaritimeBERT-v1",
+  "eval_split": "validation",
+  "metrics": {
+    "baseline_mlm_loss": 1.5271,
+    "dapt_mlm_loss": 0.5912,
+    "delta_mlm_loss": 0.9359,
+    "baseline_perplexity": 4.605,
+    "dapt_perplexity": 1.8062,
+    "delta_perplexity": 2.7988
+  }
+}

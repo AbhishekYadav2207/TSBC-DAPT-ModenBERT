@@ -1,0 +1,12 @@
+{
+  "eval_samples": 511,
+  "eval_tokens": 261180,
+  "masked_tokens_evaluated": 38526,
+  "mlm_loss": 1.5024,
+  "perplexity": 4.4922,
+  "mlm_probability": 0.15,
+  "batch_size": 8,
+  "eval_split": "validation",
+  "model_evaluated": "answerdotai/ModernBERT-base",
+  "is_baseline": true
+}

@@ -1,0 +1,66 @@
+# ==============================================================================
+# MaritimeBERT DAPT Subsystem - Git Ignore Policy
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Heavy Model Weights & Pre-training Checkpoints (>500MB Binaries)
+# ------------------------------------------------------------------------------
+# Ignore all training checkpoints (model weights, optimizer states, rotary embeddings)
+checkpoints/
+
+# Ignore large binary weight files across experiments (safetensors, PyTorch, ONNX)
+*.safetensors
+*.bin
+*.pth
+*.pt
+*.onnx
+
+# Explicitly ignore large model weight binaries in experiment export folders
+outputs/experiments/**/*.safetensors
+outputs/experiments/**/*.bin
+
+# Preserve configuration & evaluation manifest metadata in experiment exports
+!outputs/experiments/**/config.json
+!outputs/experiments/**/tokenizer.json
+!outputs/experiments/**/tokenizer_config.json
+!outputs/experiments/**/evaluation_metrics.json
+!outputs/experiments/**/experiment_manifest.json
+
+# ------------------------------------------------------------------------------
+# 2. Split Dataset Text Files & Raw Audio/Text Buffers
+# ------------------------------------------------------------------------------
+# Ignore large generated train/val/test plain text splits (~21MB)
+outputs/data/*.txt
+
+# Preserve JSON manifests required for reproducibility
+!outputs/data/corpus_manifest.json
+!outputs/data/split_manifest.json
+!outputs/data/tokenizer_report.json
+
+# ------------------------------------------------------------------------------
+# 3. Python Execution & Byte-Compiled Caches
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+*.log
+
+# ------------------------------------------------------------------------------
+# 4. Virtual Environments & Local IDE Settings
+# ------------------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.vscode/
+.idea/
+
+# ------------------------------------------------------------------------------
+# 5. OS & System Junk
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db

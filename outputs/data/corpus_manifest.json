@@ -1,0 +1,42 @@
+{
+  "corpus_file": "maritime_corpus.txt",
+  "corpus_path": "D:\\CAIR\\TSBC-Pipeline\\outputs\\maritime_corpus.txt",
+  "file_size_bytes": 21064178,
+  "sha256": "b4968819f8b41baa3ee2e2b0e22d103b5d86f5935275a377db51d09ecde3b302",
+  "total_documents": 96715,
+  "total_words": 3372882,
+  "total_characters": 20671574,
+  "unique_vocabulary": 80174,
+  "exact_duplicate_count": 0,
+  "exact_duplicate_rate": 0.0,
+  "length_statistics": {
+    "mean_words": 34.87,
+    "median_words": 37.0,
+    "std_words": 15.53,
+    "min_words": 4,
+    "max_words": 512,
+    "p10": 11.0,
+    "p25": 26.0,
+    "p50": 37.0,
+    "p75": 45.0,
+    "p90": 52.0,
+    "p95": 55.0
+  },
+  "length_buckets": {
+    "<20_words": 18103,
+    "20_50_words": 65366,
+    "50_100_words": 13046,
+    "100_200_words": 176,
+    "200_512_words": 24,
+    ">512_words": 0
+  },
+  "quality_caveats": {
+    "semantic_density_status": "WARN",
+    "duplication_status": "WARN",
+    "template_influence_status": "WARN",
+    "template_scaffolding_token_ratio": 0.6642,
+    "domain_derived_token_ratio": 0.3358,
+    "scaffold_reduced_near_duplicate_rate": 0.2058,
+    "overall_pretraining_readiness": "NEEDS IMPROVEMENT"
+  }
+}
