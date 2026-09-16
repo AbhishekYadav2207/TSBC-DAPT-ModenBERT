@@ -72,6 +72,6 @@
   "sparse_pred_ignore_index": -100,
   "sparse_prediction": false,
   "tie_word_embeddings": true,
-  "transformers_version": "5.13.1",
+  "transformers_version": "5.16.1",
   "vocab_size": 50368
 }

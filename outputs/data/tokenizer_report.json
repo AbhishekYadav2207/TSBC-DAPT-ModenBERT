@@ -4,26 +4,26 @@
   "boundary_token_id": 50282,
   "boundary_token_description": "sep_token ([SEP])",
   "sample_documents": 10000,
-  "total_sample_words": 301670,
-  "total_sample_subwords": 491332,
+  "total_sample_words": 363690,
+  "total_sample_subwords": 592330,
   "tokenizer_fertility_subwords_per_word": 1.6287,
   "unk_rate": 0.0,
   "token_length_statistics": {
-    "mean_tokens": 49.13,
-    "median_tokens": 51.0,
-    "p50_tokens": 51.0,
-    "p90_tokens": 75.0,
-    "p95_tokens": 81.0,
-    "max_tokens": 102
+    "mean_tokens": 59.23,
+    "median_tokens": 54.0,
+    "p50_tokens": 54.0,
+    "p90_tokens": 106.0,
+    "p95_tokens": 114.0,
+    "max_tokens": 145
   },
   "truncation_counts": {
-    "exceeds_128_tokens": 0,
+    "exceeds_128_tokens": 68,
     "exceeds_256_tokens": 0,
     "exceeds_512_tokens": 0,
     "exceeds_1024_tokens": 0
   },
   "truncation_rates": {
-    "exceeds_128_rate": 0.0,
+    "exceeds_128_rate": 0.0068,
     "exceeds_256_rate": 0.0,
     "exceeds_512_rate": 0.0,
     "exceeds_1024_rate": 0.0

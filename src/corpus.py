@@ -33,8 +33,8 @@ class CorpusLoader:
 
     def load_documents(self) -> List[str]:
         """
-        Reads and parses documents from corpus file.
-        Documents are non-empty records separated by blank lines or single non-empty lines.
+        Reads documents from the corpus file. Documents consist of one or more non-empty lines
+        and are separated by blank lines. Non-empty lines within each document are joined using a single space.
         """
         documents = []
         with open(self.corpus_file, "r", encoding="utf-8", errors="replace") as f:
@@ -110,28 +110,22 @@ class CorpusLoader:
             ">512_words": sum(1 for w in doc_word_counts if w > 512),
         }
 
-        # Quality warnings preserved from canonical report
-        corpus_quality_caveats = {
-            "semantic_density_status": "WARN",
-            "duplication_status": "WARN",
-            "template_influence_status": "WARN",
-            "template_scaffolding_token_ratio": 0.6642,
-            "domain_derived_token_ratio": 0.3358,
-            "scaffold_reduced_near_duplicate_rate": 0.2058,
-            "overall_pretraining_readiness": "NEEDS IMPROVEMENT"
-        }
-
         manifest = {
+            "manifest_version": "2.0",
             "corpus_file": str(self.corpus_file.name),
             "corpus_path": str(self.corpus_file.resolve()),
             "file_size_bytes": file_size_bytes,
             "sha256": sha256_hash,
+            "format": {
+                "encoding": "UTF-8",
+                "document_separator": "blank_line",
+                "line_normalization": "non_empty_lines_joined_with_single_space",
+                "word_tokenization": "whitespace"
+            },
             "total_documents": total_docs,
             "total_words": total_words,
             "total_characters": total_chars,
             "unique_vocabulary": unique_vocab,
-            "exact_duplicate_count": exact_duplicates,
-            "exact_duplicate_rate": round(exact_duplicate_rate, 6),
             "length_statistics": {
                 "mean_words": round(mean_len, 2),
                 "median_words": round(median_len, 2),
@@ -146,7 +140,10 @@ class CorpusLoader:
                 "p95": round(p95, 2),
             },
             "length_buckets": length_buckets,
-            "quality_caveats": corpus_quality_caveats
+            "corpus_integrity": {
+                "exact_duplicate_count": exact_duplicates,
+                "exact_duplicate_rate": round(exact_duplicate_rate, 6)
+            }
         }
 
         return manifest

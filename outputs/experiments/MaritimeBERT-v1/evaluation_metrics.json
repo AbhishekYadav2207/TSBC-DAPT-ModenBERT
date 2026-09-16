@@ -1,0 +1,12 @@
+{
+  "eval_samples": 585,
+  "eval_tokens": 299199,
+  "masked_tokens_evaluated": 44351,
+  "mlm_loss": 0.5247,
+  "perplexity": 1.69,
+  "mlm_probability": 0.15,
+  "batch_size": 8,
+  "eval_split": "validation",
+  "model_evaluated": "/content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/outputs/experiments/MaritimeBERT-v1",
+  "is_baseline": false
+}

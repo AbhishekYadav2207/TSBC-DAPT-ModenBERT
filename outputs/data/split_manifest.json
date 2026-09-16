@@ -6,20 +6,20 @@
     "test": 0.05
   },
   "document_counts": {
-    "train": 87043,
-    "val": 4835,
-    "test": 4837,
-    "total": 96715
+    "train": 87174,
+    "val": 4843,
+    "test": 4844,
+    "total": 96861
   },
   "word_counts": {
-    "train": 3033940,
-    "val": 169743,
-    "test": 169199
+    "train": 3446848,
+    "val": 192475,
+    "test": 191027
   },
   "file_paths": {
-    "train": "D:\\CAIR\\TSBC-Pipeline\\dapt\\outputs\\data\\train.txt",
-    "val": "D:\\CAIR\\TSBC-Pipeline\\dapt\\outputs\\data\\val.txt",
-    "test": "D:\\CAIR\\TSBC-Pipeline\\dapt\\outputs\\data\\test.txt"
+    "train": "/content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/outputs/data/train.txt",
+    "val": "/content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/outputs/data/val.txt",
+    "test": "/content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/outputs/data/test.txt"
   },
   "leakage_diagnostics": {
     "exact_duplicate_leakage": {
@@ -29,10 +29,10 @@
     },
     "near_duplicate_leakage_diagnostic": {
       "sample_evaluated": 2000,
-      "val_high_shingle_overlap_count": 1091,
-      "val_high_shingle_overlap_rate": 0.5455,
-      "test_high_shingle_overlap_count": 1115,
-      "test_high_shingle_overlap_rate": 0.5575
+      "val_high_shingle_overlap_count": 1135,
+      "val_high_shingle_overlap_rate": 0.5675,
+      "test_high_shingle_overlap_count": 1132,
+      "test_high_shingle_overlap_rate": 0.566
     }
   }
 }

@@ -1,0 +1,191 @@
+[2026-09-16 16:27:08] [INFO] [dapt] System Environment -> Torch: 2.11.0+cu128, CUDA: True
+[2026-09-16 16:27:08] [INFO] [dapt] Analyzing corpus at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/outputs/maritime_corpus.txt
+[2026-09-16 16:27:09] [INFO] [dapt] Split dataset (96861 total docs) -> Train: 87174, Val: 4843, Test: 4844
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-09-16 16:27:10] [INFO] [dapt] Packing 87174 documents into max_seq_length=512 blocks...
+[2026-09-16 16:27:27] [INFO] [dapt] Packing complete: 87174 docs -> 10484 sequences. Efficiency: 99.99% (Padding waste: 0.01%)
+[2026-09-16 16:27:27] [INFO] [dapt] Packing 4843 documents into max_seq_length=512 blocks...
+[2026-09-16 16:27:28] [INFO] [dapt] Packing complete: 4843 docs -> 585 sequences. Efficiency: 99.89% (Padding waste: 0.11%)
+[2026-09-16 16:27:28] [INFO] [dapt] Loading ModernBERT MLM model from: answerdotai/ModernBERT-base
+Loading weights: 100% 137/137 [00:00<00:00, 5722.85it/s]
+[2026-09-16 16:27:29] [INFO] [dapt] Automatically placed model on CUDA GPU.
+[2026-09-16 16:27:29] [INFO] [dapt] Starting DAPT Training -> Target Steps: 984, Per-device Batch Size: 8, Grad Accumulation: 4, Effective Batch Size: 32
+[2026-09-16 16:28:25] [INFO] [dapt] Step 10/984 | Epoch 1 | Train Loss: 5.9983 | LR: 8.47e-06 | Speed: 2934.9 tok/s (5.7 samples/s)
+[2026-09-16 16:29:25] [INFO] [dapt] Step 20/984 | Epoch 1 | Train Loss: 5.6207 | LR: 1.69e-05 | Speed: 2820.9 tok/s (5.5 samples/s)
+[2026-09-16 16:30:24] [INFO] [dapt] Step 30/984 | Epoch 1 | Train Loss: 4.9648 | LR: 2.54e-05 | Speed: 2800.1 tok/s (5.5 samples/s)
+[2026-09-16 16:31:24] [INFO] [dapt] Step 40/984 | Epoch 1 | Train Loss: 4.3144 | LR: 3.39e-05 | Speed: 2786.4 tok/s (5.4 samples/s)
+[2026-09-16 16:32:24] [INFO] [dapt] Step 50/984 | Epoch 1 | Train Loss: 3.9872 | LR: 4.24e-05 | Speed: 2778.2 tok/s (5.4 samples/s)
+[2026-09-16 16:32:24] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 16:32:59] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.9379, Perplexity: 2.5546
+[2026-09-16 16:33:59] [INFO] [dapt] Step 60/984 | Epoch 1 | Train Loss: 3.6048 | LR: 4.99e-05 | Speed: 2519.7 tok/s (4.9 samples/s)
+[2026-09-16 16:34:59] [INFO] [dapt] Step 70/984 | Epoch 1 | Train Loss: 3.3350 | LR: 4.94e-05 | Speed: 2548.9 tok/s (5.0 samples/s)
+[2026-09-16 16:35:59] [INFO] [dapt] Step 80/984 | Epoch 1 | Train Loss: 3.2517 | LR: 4.89e-05 | Speed: 2571.4 tok/s (5.0 samples/s)
+[2026-09-16 16:36:58] [INFO] [dapt] Step 90/984 | Epoch 1 | Train Loss: 3.1503 | LR: 4.83e-05 | Speed: 2590.1 tok/s (5.1 samples/s)
+[2026-09-16 16:37:58] [INFO] [dapt] Step 100/984 | Epoch 1 | Train Loss: 2.9124 | LR: 4.78e-05 | Speed: 2604.6 tok/s (5.1 samples/s)
+[2026-09-16 16:37:58] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 16:38:33] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.7413, Perplexity: 2.0987
+[2026-09-16 16:38:33] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-100
+Writing model shards: 100% 1/1 [00:02<00:00,  2.05s/it]
+[2026-09-16 16:38:42] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 16:39:42] [INFO] [dapt] Step 110/984 | Epoch 1 | Train Loss: 3.0601 | LR: 4.72e-05 | Speed: 2457.7 tok/s (4.8 samples/s)
+[2026-09-16 16:40:42] [INFO] [dapt] Step 120/984 | Epoch 1 | Train Loss: 2.9222 | LR: 4.67e-05 | Speed: 2480.0 tok/s (4.8 samples/s)
+[2026-09-16 16:41:41] [INFO] [dapt] Step 130/984 | Epoch 1 | Train Loss: 2.9218 | LR: 4.62e-05 | Speed: 2498.6 tok/s (4.9 samples/s)
+[2026-09-16 16:42:41] [INFO] [dapt] Step 140/984 | Epoch 1 | Train Loss: 2.7105 | LR: 4.56e-05 | Speed: 2515.1 tok/s (4.9 samples/s)
+[2026-09-16 16:43:41] [INFO] [dapt] Step 150/984 | Epoch 1 | Train Loss: 2.7738 | LR: 4.51e-05 | Speed: 2528.9 tok/s (4.9 samples/s)
+[2026-09-16 16:43:41] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 16:44:16] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.6837, Perplexity: 1.9812
+[2026-09-16 16:45:16] [INFO] [dapt] Step 160/984 | Epoch 1 | Train Loss: 2.7932 | LR: 4.45e-05 | Speed: 2456.7 tok/s (4.8 samples/s)
+[2026-09-16 16:46:16] [INFO] [dapt] Step 170/984 | Epoch 1 | Train Loss: 2.6737 | LR: 4.40e-05 | Speed: 2471.9 tok/s (4.8 samples/s)
+[2026-09-16 16:47:15] [INFO] [dapt] Step 180/984 | Epoch 1 | Train Loss: 2.6276 | LR: 4.35e-05 | Speed: 2485.5 tok/s (4.9 samples/s)
+[2026-09-16 16:48:15] [INFO] [dapt] Step 190/984 | Epoch 1 | Train Loss: 2.5721 | LR: 4.29e-05 | Speed: 2497.8 tok/s (4.9 samples/s)
+[2026-09-16 16:49:15] [INFO] [dapt] Step 200/984 | Epoch 1 | Train Loss: 2.6581 | LR: 4.24e-05 | Speed: 2509.0 tok/s (4.9 samples/s)
+[2026-09-16 16:49:15] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 16:49:50] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.6564, Perplexity: 1.9279
+[2026-09-16 16:49:50] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-200
+Writing model shards: 100% 1/1 [00:02<00:00,  2.52s/it]
+[2026-09-16 16:50:00] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 16:51:00] [INFO] [dapt] Step 210/984 | Epoch 1 | Train Loss: 2.5841 | LR: 4.18e-05 | Speed: 2438.6 tok/s (4.8 samples/s)
+[2026-09-16 16:51:59] [INFO] [dapt] Step 220/984 | Epoch 1 | Train Loss: 2.4620 | LR: 4.13e-05 | Speed: 2451.1 tok/s (4.8 samples/s)
+[2026-09-16 16:52:59] [INFO] [dapt] Step 230/984 | Epoch 1 | Train Loss: 2.5318 | LR: 4.08e-05 | Speed: 2462.6 tok/s (4.8 samples/s)
+[2026-09-16 16:53:58] [INFO] [dapt] Step 240/984 | Epoch 1 | Train Loss: 2.5219 | LR: 4.02e-05 | Speed: 2473.2 tok/s (4.8 samples/s)
+[2026-09-16 16:54:58] [INFO] [dapt] Step 250/984 | Epoch 1 | Train Loss: 2.4994 | LR: 3.97e-05 | Speed: 2482.9 tok/s (4.9 samples/s)
+[2026-09-16 16:54:58] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 16:55:34] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.6110, Perplexity: 1.8423
+[2026-09-16 16:56:34] [INFO] [dapt] Step 260/984 | Epoch 1 | Train Loss: 2.5242 | LR: 3.91e-05 | Speed: 2441.1 tok/s (4.8 samples/s)
+[2026-09-16 16:57:33] [INFO] [dapt] Step 270/984 | Epoch 1 | Train Loss: 2.5372 | LR: 3.86e-05 | Speed: 2451.3 tok/s (4.8 samples/s)
+[2026-09-16 16:58:33] [INFO] [dapt] Step 280/984 | Epoch 1 | Train Loss: 2.4104 | LR: 3.81e-05 | Speed: 2460.7 tok/s (4.8 samples/s)
+[2026-09-16 16:59:33] [INFO] [dapt] Step 290/984 | Epoch 1 | Train Loss: 2.3668 | LR: 3.75e-05 | Speed: 2469.6 tok/s (4.8 samples/s)
+[2026-09-16 17:00:32] [INFO] [dapt] Step 300/984 | Epoch 1 | Train Loss: 2.4869 | LR: 3.70e-05 | Speed: 2477.8 tok/s (4.8 samples/s)
+[2026-09-16 17:00:32] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:01:08] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.6106, Perplexity: 1.8415
+[2026-09-16 17:01:08] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-300
+Writing model shards: 100% 1/1 [00:03<00:00,  3.81s/it]
+[2026-09-16 17:01:16] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 17:02:16] [INFO] [dapt] Step 310/984 | Epoch 1 | Train Loss: 2.3986 | LR: 3.64e-05 | Speed: 2433.0 tok/s (4.8 samples/s)
+[2026-09-16 17:03:16] [INFO] [dapt] Step 320/984 | Epoch 1 | Train Loss: 2.2891 | LR: 3.59e-05 | Speed: 2442.0 tok/s (4.8 samples/s)
+[2026-09-16 17:04:13] [INFO] [dapt] Step 330/984 | Epoch 2 | Train Loss: 2.2642 | LR: 3.54e-05 | Speed: 2449.9 tok/s (4.8 samples/s)
+[2026-09-16 17:05:13] [INFO] [dapt] Step 340/984 | Epoch 2 | Train Loss: 2.3225 | LR: 3.48e-05 | Speed: 2457.6 tok/s (4.8 samples/s)
+[2026-09-16 17:06:12] [INFO] [dapt] Step 350/984 | Epoch 2 | Train Loss: 2.4046 | LR: 3.43e-05 | Speed: 2465.1 tok/s (4.8 samples/s)
+[2026-09-16 17:06:12] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:06:48] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.6038, Perplexity: 1.8291
+[2026-09-16 17:07:48] [INFO] [dapt] Step 360/984 | Epoch 2 | Train Loss: 2.2907 | LR: 3.37e-05 | Speed: 2435.5 tok/s (4.8 samples/s)
+[2026-09-16 17:08:47] [INFO] [dapt] Step 370/984 | Epoch 2 | Train Loss: 2.3421 | LR: 3.32e-05 | Speed: 2442.9 tok/s (4.8 samples/s)
+[2026-09-16 17:09:47] [INFO] [dapt] Step 380/984 | Epoch 2 | Train Loss: 2.2955 | LR: 3.26e-05 | Speed: 2450.2 tok/s (4.8 samples/s)
+[2026-09-16 17:10:46] [INFO] [dapt] Step 390/984 | Epoch 2 | Train Loss: 2.3156 | LR: 3.21e-05 | Speed: 2457.0 tok/s (4.8 samples/s)
+[2026-09-16 17:11:46] [INFO] [dapt] Step 400/984 | Epoch 2 | Train Loss: 2.2945 | LR: 3.16e-05 | Speed: 2463.4 tok/s (4.8 samples/s)
+[2026-09-16 17:11:46] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:12:22] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5813, Perplexity: 1.7883
+[2026-09-16 17:12:22] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-400
+Writing model shards: 100% 1/1 [00:02<00:00,  2.33s/it]
+[2026-09-16 17:12:31] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 17:12:31] [INFO] [dapt] Pruning old checkpoint: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-100
+[2026-09-16 17:13:31] [INFO] [dapt] Step 410/984 | Epoch 2 | Train Loss: 2.2615 | LR: 3.10e-05 | Speed: 2429.2 tok/s (4.7 samples/s)
+[2026-09-16 17:14:31] [INFO] [dapt] Step 420/984 | Epoch 2 | Train Loss: 2.2876 | LR: 3.05e-05 | Speed: 2436.1 tok/s (4.8 samples/s)
+[2026-09-16 17:15:30] [INFO] [dapt] Step 430/984 | Epoch 2 | Train Loss: 2.2904 | LR: 2.99e-05 | Speed: 2442.5 tok/s (4.8 samples/s)
+[2026-09-16 17:16:30] [INFO] [dapt] Step 440/984 | Epoch 2 | Train Loss: 2.2888 | LR: 2.94e-05 | Speed: 2448.7 tok/s (4.8 samples/s)
+[2026-09-16 17:17:30] [INFO] [dapt] Step 450/984 | Epoch 2 | Train Loss: 2.2688 | LR: 2.89e-05 | Speed: 2454.6 tok/s (4.8 samples/s)
+[2026-09-16 17:17:30] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:18:05] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5718, Perplexity: 1.7715
+[2026-09-16 17:19:05] [INFO] [dapt] Step 460/984 | Epoch 2 | Train Loss: 2.2321 | LR: 2.83e-05 | Speed: 2431.9 tok/s (4.8 samples/s)
+[2026-09-16 17:20:04] [INFO] [dapt] Step 470/984 | Epoch 2 | Train Loss: 2.2962 | LR: 2.78e-05 | Speed: 2437.9 tok/s (4.8 samples/s)
+[2026-09-16 17:21:04] [INFO] [dapt] Step 480/984 | Epoch 2 | Train Loss: 2.3268 | LR: 2.72e-05 | Speed: 2443.6 tok/s (4.8 samples/s)
+[2026-09-16 17:22:04] [INFO] [dapt] Step 490/984 | Epoch 2 | Train Loss: 2.2116 | LR: 2.67e-05 | Speed: 2449.2 tok/s (4.8 samples/s)
+[2026-09-16 17:23:04] [INFO] [dapt] Step 500/984 | Epoch 2 | Train Loss: 2.2192 | LR: 2.62e-05 | Speed: 2454.4 tok/s (4.8 samples/s)
+[2026-09-16 17:23:04] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:23:39] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5641, Perplexity: 1.7579
+[2026-09-16 17:23:39] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-500
+Writing model shards: 100% 1/1 [00:02<00:00,  2.23s/it]
+[2026-09-16 17:23:48] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 17:23:48] [INFO] [dapt] Pruning old checkpoint: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-200
+[2026-09-16 17:24:48] [INFO] [dapt] Step 510/984 | Epoch 2 | Train Loss: 2.2195 | LR: 2.56e-05 | Speed: 2427.2 tok/s (4.7 samples/s)
+[2026-09-16 17:25:48] [INFO] [dapt] Step 520/984 | Epoch 2 | Train Loss: 2.2051 | LR: 2.51e-05 | Speed: 2432.8 tok/s (4.8 samples/s)
+[2026-09-16 17:26:48] [INFO] [dapt] Step 530/984 | Epoch 2 | Train Loss: 2.1727 | LR: 2.45e-05 | Speed: 2438.0 tok/s (4.8 samples/s)
+[2026-09-16 17:27:47] [INFO] [dapt] Step 540/984 | Epoch 2 | Train Loss: 2.1873 | LR: 2.40e-05 | Speed: 2443.0 tok/s (4.8 samples/s)
+[2026-09-16 17:28:47] [INFO] [dapt] Step 550/984 | Epoch 2 | Train Loss: 2.1746 | LR: 2.35e-05 | Speed: 2447.8 tok/s (4.8 samples/s)
+[2026-09-16 17:28:47] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:29:23] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5514, Perplexity: 1.7357
+[2026-09-16 17:30:23] [INFO] [dapt] Step 560/984 | Epoch 2 | Train Loss: 2.2189 | LR: 2.29e-05 | Speed: 2429.4 tok/s (4.7 samples/s)
+[2026-09-16 17:31:22] [INFO] [dapt] Step 570/984 | Epoch 2 | Train Loss: 2.2095 | LR: 2.24e-05 | Speed: 2434.3 tok/s (4.8 samples/s)
+[2026-09-16 17:32:22] [INFO] [dapt] Step 580/984 | Epoch 2 | Train Loss: 2.2167 | LR: 2.18e-05 | Speed: 2439.2 tok/s (4.8 samples/s)
+[2026-09-16 17:33:21] [INFO] [dapt] Step 590/984 | Epoch 2 | Train Loss: 2.2084 | LR: 2.13e-05 | Speed: 2443.8 tok/s (4.8 samples/s)
+[2026-09-16 17:34:21] [INFO] [dapt] Step 600/984 | Epoch 2 | Train Loss: 2.3151 | LR: 2.08e-05 | Speed: 2448.2 tok/s (4.8 samples/s)
+[2026-09-16 17:34:21] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:34:57] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5555, Perplexity: 1.7427
+[2026-09-16 17:34:57] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-600
+Writing model shards: 100% 1/1 [00:02<00:00,  2.58s/it]
+[2026-09-16 17:35:00] [INFO] [dapt] Pruning old checkpoint: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-300
+[2026-09-16 17:36:00] [INFO] [dapt] Step 610/984 | Epoch 2 | Train Loss: 2.0909 | LR: 2.02e-05 | Speed: 2429.3 tok/s (4.7 samples/s)
+[2026-09-16 17:36:59] [INFO] [dapt] Step 620/984 | Epoch 2 | Train Loss: 2.0949 | LR: 1.97e-05 | Speed: 2433.9 tok/s (4.8 samples/s)
+[2026-09-16 17:37:59] [INFO] [dapt] Step 630/984 | Epoch 2 | Train Loss: 2.2025 | LR: 1.91e-05 | Speed: 2438.2 tok/s (4.8 samples/s)
+[2026-09-16 17:38:59] [INFO] [dapt] Step 640/984 | Epoch 2 | Train Loss: 2.1341 | LR: 1.86e-05 | Speed: 2442.4 tok/s (4.8 samples/s)
+[2026-09-16 17:39:59] [INFO] [dapt] Step 650/984 | Epoch 2 | Train Loss: 2.1532 | LR: 1.81e-05 | Speed: 2446.6 tok/s (4.8 samples/s)
+[2026-09-16 17:39:59] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:40:34] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5216, Perplexity: 1.6847
+[2026-09-16 17:41:32] [INFO] [dapt] Step 660/984 | Epoch 3 | Train Loss: 2.0088 | LR: 1.75e-05 | Speed: 2430.9 tok/s (4.7 samples/s)
+[2026-09-16 17:42:31] [INFO] [dapt] Step 670/984 | Epoch 3 | Train Loss: 2.1967 | LR: 1.70e-05 | Speed: 2435.1 tok/s (4.8 samples/s)
+[2026-09-16 17:43:31] [INFO] [dapt] Step 680/984 | Epoch 3 | Train Loss: 2.0936 | LR: 1.64e-05 | Speed: 2439.1 tok/s (4.8 samples/s)
+[2026-09-16 17:44:31] [INFO] [dapt] Step 690/984 | Epoch 3 | Train Loss: 2.1613 | LR: 1.59e-05 | Speed: 2442.9 tok/s (4.8 samples/s)
+[2026-09-16 17:45:31] [INFO] [dapt] Step 700/984 | Epoch 3 | Train Loss: 2.1705 | LR: 1.54e-05 | Speed: 2446.8 tok/s (4.8 samples/s)
+[2026-09-16 17:45:31] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:46:06] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5538, Perplexity: 1.7399
+[2026-09-16 17:46:06] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-700
+Writing model shards: 100% 1/1 [00:02<00:00,  2.43s/it]
+[2026-09-16 17:46:10] [INFO] [dapt] Pruning old checkpoint: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-400
+[2026-09-16 17:47:10] [INFO] [dapt] Step 710/984 | Epoch 3 | Train Loss: 2.0683 | LR: 1.48e-05 | Speed: 2430.4 tok/s (4.7 samples/s)
+[2026-09-16 17:48:09] [INFO] [dapt] Step 720/984 | Epoch 3 | Train Loss: 1.9912 | LR: 1.43e-05 | Speed: 2434.3 tok/s (4.8 samples/s)
+[2026-09-16 17:49:09] [INFO] [dapt] Step 730/984 | Epoch 3 | Train Loss: 2.1357 | LR: 1.37e-05 | Speed: 2438.0 tok/s (4.8 samples/s)
+[2026-09-16 17:50:09] [INFO] [dapt] Step 740/984 | Epoch 3 | Train Loss: 2.0665 | LR: 1.32e-05 | Speed: 2441.6 tok/s (4.8 samples/s)
+[2026-09-16 17:51:09] [INFO] [dapt] Step 750/984 | Epoch 3 | Train Loss: 2.1054 | LR: 1.26e-05 | Speed: 2445.2 tok/s (4.8 samples/s)
+[2026-09-16 17:51:09] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:51:44] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5251, Perplexity: 1.6905
+[2026-09-16 17:52:44] [INFO] [dapt] Step 760/984 | Epoch 3 | Train Loss: 2.1593 | LR: 1.21e-05 | Speed: 2431.6 tok/s (4.7 samples/s)
+[2026-09-16 17:53:44] [INFO] [dapt] Step 770/984 | Epoch 3 | Train Loss: 2.1577 | LR: 1.16e-05 | Speed: 2435.2 tok/s (4.8 samples/s)
+[2026-09-16 17:54:43] [INFO] [dapt] Step 780/984 | Epoch 3 | Train Loss: 2.0105 | LR: 1.10e-05 | Speed: 2438.7 tok/s (4.8 samples/s)
+[2026-09-16 17:55:43] [INFO] [dapt] Step 790/984 | Epoch 3 | Train Loss: 2.0851 | LR: 1.05e-05 | Speed: 2442.3 tok/s (4.8 samples/s)
+[2026-09-16 17:56:43] [INFO] [dapt] Step 800/984 | Epoch 3 | Train Loss: 2.0960 | LR: 9.95e-06 | Speed: 2445.7 tok/s (4.8 samples/s)
+[2026-09-16 17:56:43] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 17:57:18] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5203, Perplexity: 1.6825
+[2026-09-16 17:57:18] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-800
+Writing model shards: 100% 1/1 [00:06<00:00,  6.79s/it]
+[2026-09-16 17:57:32] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 17:57:32] [INFO] [dapt] Pruning old checkpoint: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-500
+[2026-09-16 17:58:33] [INFO] [dapt] Step 810/984 | Epoch 3 | Train Loss: 2.0009 | LR: 9.41e-06 | Speed: 2426.3 tok/s (4.7 samples/s)
+[2026-09-16 17:59:32] [INFO] [dapt] Step 820/984 | Epoch 3 | Train Loss: 2.0938 | LR: 8.86e-06 | Speed: 2429.9 tok/s (4.7 samples/s)
+[2026-09-16 18:00:32] [INFO] [dapt] Step 830/984 | Epoch 3 | Train Loss: 2.0617 | LR: 8.32e-06 | Speed: 2433.2 tok/s (4.8 samples/s)
+[2026-09-16 18:01:32] [INFO] [dapt] Step 840/984 | Epoch 3 | Train Loss: 2.0741 | LR: 7.78e-06 | Speed: 2436.5 tok/s (4.8 samples/s)
+[2026-09-16 18:02:32] [INFO] [dapt] Step 850/984 | Epoch 3 | Train Loss: 2.1526 | LR: 7.24e-06 | Speed: 2439.6 tok/s (4.8 samples/s)
+[2026-09-16 18:02:32] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 18:03:07] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5278, Perplexity: 1.6951
+[2026-09-16 18:04:07] [INFO] [dapt] Step 860/984 | Epoch 3 | Train Loss: 2.1007 | LR: 6.70e-06 | Speed: 2427.8 tok/s (4.7 samples/s)
+[2026-09-16 18:05:07] [INFO] [dapt] Step 870/984 | Epoch 3 | Train Loss: 2.1547 | LR: 6.16e-06 | Speed: 2431.0 tok/s (4.7 samples/s)
+[2026-09-16 18:06:06] [INFO] [dapt] Step 880/984 | Epoch 3 | Train Loss: 2.0567 | LR: 5.62e-06 | Speed: 2434.2 tok/s (4.8 samples/s)
+[2026-09-16 18:07:06] [INFO] [dapt] Step 890/984 | Epoch 3 | Train Loss: 2.0482 | LR: 5.08e-06 | Speed: 2437.2 tok/s (4.8 samples/s)
+[2026-09-16 18:08:06] [INFO] [dapt] Step 900/984 | Epoch 3 | Train Loss: 2.0663 | LR: 4.54e-06 | Speed: 2440.3 tok/s (4.8 samples/s)
+[2026-09-16 18:08:06] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 18:08:41] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5158, Perplexity: 1.675
+[2026-09-16 18:08:41] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-900
+Writing model shards: 100% 1/1 [00:06<00:00,  6.65s/it]
+[2026-09-16 18:08:52] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 18:08:52] [INFO] [dapt] Pruning old checkpoint: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-600
+[2026-09-16 18:09:53] [INFO] [dapt] Step 910/984 | Epoch 3 | Train Loss: 2.0464 | LR: 4.00e-06 | Speed: 2424.4 tok/s (4.7 samples/s)
+[2026-09-16 18:10:52] [INFO] [dapt] Step 920/984 | Epoch 3 | Train Loss: 1.9443 | LR: 3.46e-06 | Speed: 2427.7 tok/s (4.7 samples/s)
+[2026-09-16 18:11:52] [INFO] [dapt] Step 930/984 | Epoch 3 | Train Loss: 2.1367 | LR: 2.92e-06 | Speed: 2430.7 tok/s (4.7 samples/s)
+[2026-09-16 18:12:52] [INFO] [dapt] Step 940/984 | Epoch 3 | Train Loss: 2.0509 | LR: 2.38e-06 | Speed: 2433.6 tok/s (4.8 samples/s)
+[2026-09-16 18:13:51] [INFO] [dapt] Step 950/984 | Epoch 3 | Train Loss: 1.9480 | LR: 1.84e-06 | Speed: 2436.6 tok/s (4.8 samples/s)
+[2026-09-16 18:13:51] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 18:14:27] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.4991, Perplexity: 1.6473
+[2026-09-16 18:15:26] [INFO] [dapt] Step 960/984 | Epoch 3 | Train Loss: 2.0678 | LR: 1.30e-06 | Speed: 2426.1 tok/s (4.7 samples/s)
+[2026-09-16 18:16:26] [INFO] [dapt] Step 970/984 | Epoch 3 | Train Loss: 2.1021 | LR: 7.57e-07 | Speed: 2429.0 tok/s (4.7 samples/s)
+[2026-09-16 18:17:26] [INFO] [dapt] Step 980/984 | Epoch 3 | Train Loss: 2.0423 | LR: 2.16e-07 | Speed: 2431.8 tok/s (4.8 samples/s)
+[2026-09-16 18:17:48] [INFO] [dapt] Step 984/984 | Epoch 3 | Train Loss: 0.8427 | LR: 0.00e+00 | Speed: 2432.8 tok/s (4.8 samples/s)
+[2026-09-16 18:17:48] [INFO] [dapt] Evaluating model on 585 packed evaluation samples...
+[2026-09-16 18:18:23] [INFO] [dapt] Evaluation complete -> MLM Loss: 0.5151, Perplexity: 1.6739
+[2026-09-16 18:18:23] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-984
+Writing model shards: 100% 1/1 [00:02<00:00,  2.88s/it]
+[2026-09-16 18:18:26] [INFO] [dapt] Pruning old checkpoint: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-700
+[2026-09-16 18:18:26] [INFO] [dapt] Saving step checkpoint to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/checkpoint-984
+Writing model shards: 100% 1/1 [00:04<00:00,  4.39s/it]
+[2026-09-16 18:18:34] [INFO] [dapt] Updated best checkpoint link at: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/checkpoints/best
+[2026-09-16 18:18:34] [INFO] [dapt] Exporting final MaritimeBERT-v1 model to: /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/outputs/experiments/MaritimeBERT-v1
+Writing model shards: 100% 1/1 [00:04<00:00,  4.14s/it]
+[2026-09-16 18:18:39] [INFO] [dapt] DAPT training completed successfully. Artifacts exported to /content/drive/MyDrive/Abhishek-TSBC/TSBC-Pipeline/dapt/outputs/experiments/MaritimeBERT-v1
