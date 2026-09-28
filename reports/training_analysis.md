@@ -1,30 +1,14 @@
-# DAPT Training Analysis Report
+# Empirical Training Trajectory & Performance Analysis
 
-Derived from training execution logs, `dapt/configs/dapt.yaml`, and checkpoint step metrics.
+- **Target Steps**: 984 steps (3 full epochs)
+- **Effective Batch Size**: 32 sequences (8 per-device x 4 grad accumulation)
+- **Elapsed Duration**: 6665.35 seconds (~1.85 hours)
+- **Total Tokens Processed**: 16,101,987
+- **Average Throughput**: 2415.77 tokens/second
 
----
-
-## 1. Hyperparameter Configuration
-
-- **Target Epochs**: $3.0$
-- **Total Training Steps**: $855$ steps
-- **Per-Device Batch Size**: $8$
-- **Gradient Accumulation Steps**: $4$
-- **Effective Batch Size**: $32$ packed sequences ($16,384$ tokens per update step)
-- **Base Learning Rate**: $\eta = 5.0 \times 10^{-5}$
-- **Optimizer**: `AdamW` ($\beta_1=0.9, \beta_2=0.999, \lambda=0.01$)
-- **Scheduler**: Linear decay with $6\%$ warmup (~51 steps)
-
----
-
-## 2. Loss & Perplexity Trajectory
-
-| Step | Epoch | Held-Out MLM Loss | Held-Out Perplexity | System Role / Event |
-| :---: | :---: | :---: | :---: | :--- |
-| **0** | 0 | `1.5271` | `4.6050` | Untouched Baseline Control |
-| **700** | 2.45 | `0.5916` | `1.8069` | Intermediate Checkpoint |
-| **800** | 2.80 | **`0.5898`** | **`1.8037`** | **Optimal Validation Loss Checkpoint** |
-| **855** | 3.00 | **`0.5912`** | **`1.8062`** | **Released Exported Artifact (`MaritimeBERT-v1`)** |
-
-![Validation Loss Curve](file:///d:/CAIR/TSBC-Pipeline/dapt/figures/validation_loss_curve.png)
-![Perplexity Curve](file:///d:/CAIR/TSBC-Pipeline/dapt/figures/perplexity_curve.png)
+## Trajectory Landmarks
+- **Initial Evaluation (Step 50)**: MLM Loss: 0.9379, Perplexity: 2.5546
+- **Mid-Point Evaluation (Step 500)**: MLM Loss: 0.5641, Perplexity: 1.7579
+- **Best Validation State (Step 950)**: MLM Loss: **0.4991**, Perplexity: **1.6473** (Unpersisted state)
+- **Final Training Checkpoint (Step 984)**: MLM Loss: **0.5151**, Perplexity: **1.6739** (Persisted in `checkpoint-984` & `best/`)
+- **Exported MaritimeBERT-v1**: Sourced from Step 984. Post-training evaluation achieves MLM Loss: **0.5247**, Perplexity: **1.6900**.

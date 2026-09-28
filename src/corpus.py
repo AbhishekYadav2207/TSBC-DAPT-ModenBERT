@@ -143,7 +143,8 @@ class CorpusLoader:
             "corpus_integrity": {
                 "exact_duplicate_count": exact_duplicates,
                 "exact_duplicate_rate": round(exact_duplicate_rate, 6)
-            }
+            },
+            "quality_caveats": None
         }
 
         return manifest

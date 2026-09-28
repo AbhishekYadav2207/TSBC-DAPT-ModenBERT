@@ -15,10 +15,10 @@ To prevent evaluation leakage, dataset partitioning is performed strictly at the
 
 | Partition | Document Count | Word Count | Percentage | Saved Path |
 | :--- | :---: | :---: | :---: | :--- |
-| **Train Set** | **87,043** | 3,033,940 | $90.0\%$ | `dapt/outputs/data/train.txt` |
-| **Validation Set** | **4,835** | 169,743 | $5.0\%$ | `dapt/outputs/data/val.txt` |
-| **Test Set** | **4,837** | 169,199 | $5.0\%$ | `dapt/outputs/data/test.txt` |
-| **Total** | **96,715** | **3,372,882** | **$100.0\%$** | — |
+| **Train Set** | **87,174** | 3,446,848 | $90.0\%$ | `dapt/outputs/data/train.txt` |
+| **Validation Set** | **4,843** | 192,475 | $5.0\%$ | `dapt/outputs/data/val.txt` |
+| **Test Set** | **4,844** | 191,027 | $5.0\%$ | `dapt/outputs/data/test.txt` |
+| **Total** | **96,861** | **3,830,350** | **$100.0\%$** | `outputs/maritime_corpus.txt` |
 
 ---
 
@@ -35,21 +35,21 @@ To prevent evaluation leakage, dataset partitioning is performed strictly at the
   },
   "near_duplicate_leakage_diagnostic": {
     "sample_evaluated": 2000,
-    "val_high_shingle_overlap_count": 1091,
-    "val_high_shingle_overlap_rate": 0.5455,
-    "test_high_shingle_overlap_count": 1115,
-    "test_high_shingle_overlap_rate": 0.5575
+    "val_high_shingle_overlap_count": 1135,
+    "val_high_shingle_overlap_rate": 0.5675,
+    "test_high_shingle_overlap_count": 1132,
+    "test_high_shingle_overlap_rate": 0.5660
   }
 }
 ```
 
 ### Analysis of Leakage Results
 - **Exact Duplicate Leakage**: **0 document overlap** between train, validation, and test sets.
-- **Near-Duplicate Overlap**: High 3-shingle overlap ($54.55\%$ validation, $55.75\%$ test) caused by recurring maritime safety report templates (e.g., standard vessel casualty preamble boilerplate).
+- **Near-Duplicate Overlap**: High 3-shingle overlap ($56.75\%$ validation, $56.60\%$ test) caused by recurring maritime safety report templates (e.g., standard vessel casualty preamble boilerplate).
 
 ---
 
 ## 3. Test Set Preservation
 
 > [!IMPORTANT]
-> The **4,837-document test set (`test.txt`) remains completely untouched** during training and hyperparameter tuning. It is reserved exclusively for final un-biased benchmarking.
+> The **4,844-document test set (`test.txt`) remains completely untouched** during training and hyperparameter tuning. It is reserved exclusively for final unbiased benchmarking.

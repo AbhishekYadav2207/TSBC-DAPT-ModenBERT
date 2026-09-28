@@ -1,0 +1,46 @@
+{
+  "figures": [
+    {
+      "id": "figure_1",
+      "filename": "validation_loss_curve.png",
+      "vector_pdf": "validation_loss_curve.pdf",
+      "title": "Validation MLM Loss Progression Across DAPT Steps",
+      "caption": "Figure 1: Held-out validation MLM loss progression across all 20 evaluation checkpoints (steps 50\u2013984). The empirical best validation state occurs at Step 950 (loss: 0.4991, unpersisted). The final training checkpoint is Step 984 (in-training loss: 0.5151, persisted and exported)."
+    },
+    {
+      "id": "figure_2",
+      "filename": "perplexity_curve.png",
+      "vector_pdf": "perplexity_curve.pdf",
+      "title": "Validation Perplexity Trajectory Across DAPT Steps",
+      "caption": "Figure 2: Held-out validation perplexity trajectory across all 20 evaluated points. Step 950 achieves minimum perplexity (1.6473, unpersisted state); Step 984 final checkpoint reaches perplexity 1.6739."
+    },
+    {
+      "id": "figure_3",
+      "filename": "baseline_vs_dapt.png",
+      "vector_pdf": "baseline_vs_dapt.pdf",
+      "title": "Post-Training Baseline ModernBERT vs. Exported MaritimeBERT-v1 Comparison",
+      "caption": "Figure 3: Post-training evaluation comparison on the 585 packed validation sequences. MaritimeBERT-v1 demonstrates a 65.85% reduction in MLM cross-entropy loss (1.5365 -> 0.5247) and a 63.64% reduction in perplexity (4.6484 -> 1.6900)."
+    },
+    {
+      "id": "figure_4",
+      "filename": "learning_rate_trajectory.png",
+      "vector_pdf": "learning_rate_trajectory.pdf",
+      "title": "Training Learning Rate Warmup and Linear Decay Schedule",
+      "caption": "Figure 4: Empirical learning rate trajectory showing linear warmup over the first 59 steps to 5e-05, followed by monotonic linear decay terminating at 0.0 at step 984."
+    },
+    {
+      "id": "figure_5",
+      "filename": "checkpoint_comparison.png",
+      "vector_pdf": "checkpoint_comparison.pdf",
+      "title": "Model States & Checkpoint Lifecycle Architecture",
+      "caption": "Figure 5: Systematic comparison of all four empirical states: Baseline ModernBERT-base control, Step 950 best validation state (hatched to denote non-persistence), Step 984 final training checkpoint (persisted), and MaritimeBERT-v1 (exported model weights)."
+    },
+    {
+      "id": "figure_6",
+      "filename": "corpus_split_packing_summary.png",
+      "vector_pdf": "corpus_split_packing_summary.pdf",
+      "title": "Maritime Corpus Partition and Sequence Packing Summary",
+      "caption": "Figure 6: Corpus partitioning (87,174 train / 4,843 val / 4,844 test) and sequence packing efficiency (99.99% train, 99.89% val) over 512-token blocks."
+    }
+  ]
+}

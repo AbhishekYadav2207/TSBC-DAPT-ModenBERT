@@ -1,18 +1,22 @@
-# Checkpoint Lifecycle Diagram
+# Checkpoint Lifecycle & Model State Architecture
 
 ```mermaid
 flowchart TD
-    subgraph CheckpointsDir ["dapt/checkpoints/ Directory"]
-        Step700["checkpoint-700/ (Loss: 0.5916, PPL: 1.8069)"]
-        Step800["checkpoint-800/ (Loss: 0.5898, PPL: 1.8037) <-- BEST VAL"]
-        Step855["checkpoint-855/ (Loss: 0.5996, PPL: 1.8213) <-- FINAL STEP"]
-        BestSymlink["best/ (Copy of Step 800)"]
+    subgraph InTrainingStates ["In-Training Evaluation States (eval_steps=50)"]
+        Step950["Step 950 State\nLoss: 0.4991 | PPL: 1.6473\nBEST VALIDATION STATE\n[UNPERSISTED STATE - save_steps=100]"]
+    end
+
+    subgraph CheckpointsDir ["dapt/checkpoints/ Directory (save_total_limit=3)"]
+        Step800["checkpoint-800/\nLoss: 0.5203 | PPL: 1.6825\n[Persisted Step]"]
+        Step900["checkpoint-900/\nLoss: 0.5158 | PPL: 1.6750\n[Persisted Step]"]
+        Step984["checkpoint-984/\nLoss: 0.5151 | PPL: 1.6739\nFINAL TRAINING CHECKPOINT\n[Persisted Terminal Step]"]
+        BestSymlink["best/\n(Copy of Step 984 Checkpoint)"]
     end
 
     subgraph ReleaseDir ["dapt/outputs/experiments/ Directory"]
-        MaritimeBERTv1["MaritimeBERT-v1/ (Exported Weights from Step 855)"]
+        MaritimeBERTv1["MaritimeBERT-v1/\nExported Weights from Step 984\nPost-Training Eval: Loss 0.5247 | PPL 1.6900\n[RELEASED ARTIFACT]"]
     end
 
-    Step800 --> BestSymlink
-    Step855 --> MaritimeBERTv1
+    Step984 --> BestSymlink
+    Step984 --> MaritimeBERTv1
 ```

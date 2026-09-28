@@ -6,28 +6,31 @@ Empirical results comparing the untouched ModernBERT baseline against the releas
 
 ## 1. Empirical Results Table
 
-| Model / Checkpoint | Step | Held-Out Loss | Held-Out Perplexity | Loss Delta ($\Delta$) | Perplexity Delta ($\Delta$) | Relative Gain (%) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **`ModernBERT-base`** | — | `1.5271` | `4.6050` | baseline | baseline | baseline |
-| **Best Val Checkpoint** | **800** | **`0.5898`** | **`1.8037`** | $-0.9373$ | $-2.8013$ | **60.8% PPL Gain** |
-| **`MaritimeBERT-v1`** | **855** | **`0.5912`** | **`1.8062`** | $-0.9359$ | $-2.7988$ | **60.8% PPL Gain** |
+| Model / Checkpoint | Step | Held-Out Loss | Held-Out Perplexity | Persisted? | Loss Delta ($\Delta$) | Perplexity Delta ($\Delta$) | Status / Protocol |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **`ModernBERT-base`** | 0 | `1.5365` | `4.6484` | Yes | baseline | baseline | Baseline Control Eval |
+| **Best validation state** | **950** | **`0.4991`** | **`1.6473`** | **NO** | $-1.0374$ | $-3.0011$ | In-training loss minimum (unpersisted) |
+| **Final Checkpoint** | **984** | **`0.5151`** | **`1.6739`** | **Yes** | $-1.0214$ | $-2.9745$ | In-training final step eval (persisted) |
+| **`MaritimeBERT-v1`** | **984** | **`0.5247*`** | **`1.6900*`** | **Yes** | **$-1.0118$** | **$-2.9584$** | **Post-training exported model eval** |
+
+`*` Evaluated post-training on 585 packed validation sequences.
 
 ![Baseline vs DAPT](file:///d:/CAIR/TSBC-Pipeline/dapt/figures/baseline_vs_dapt.png)
 ![Checkpoint Comparison](file:///d:/CAIR/TSBC-Pipeline/dapt/figures/checkpoint_comparison.png)
 
 ---
 
-## 2. Quantitative Deltas
+## 2. Quantitative Deltas: Post-Training Baseline-vs-Exported-Model Comparison
 
-$$\Delta \text{MLM Loss} = 1.5271 - 0.5912 = 0.9359 \quad (\mathbf{61.3\% \text{ Loss Reduction}})$$
+$$\Delta \text{MLM Loss} = 1.5365 - 0.5247 = 1.0118 \quad (\mathbf{65.85\% \text{ Loss Reduction}})$$
 
-$$\Delta \text{Perplexity} = 4.6050 - 1.8062 = 2.7988 \quad (\mathbf{60.8\% \text{ Perplexity Reduction}})$$
+$$\Delta \text{Perplexity} = 4.6484 - 1.6900 = 2.9584 \quad (\mathbf{63.64\% \text{ Perplexity Reduction}})$$
 
 ---
 
 ## 3. Scientific Scope & Boundaries
 
 > [!IMPORTANT]
-> **Intrinsic Language Modeling Gain**: The $60.8\%$ reduction in perplexity ($4.6050 \rightarrow 1.8062$) proves superior modeling of maritime occurrence syntax and terminology under the self-supervised MLM objective.
+> **Intrinsic Language Modeling Gain**: The $63.64\%$ reduction in perplexity ($4.6484 \rightarrow 1.6900$) proves superior modeling of maritime occurrence syntax and terminology under the self-supervised MLM objective on the held-out validation set.
 >
 > **Task Scope Limitation**: This result **does not, by itself, establish superiority on downstream tasks** (NER, classification, QA, retrieval, or RAG) without task-specific fine-tuning.

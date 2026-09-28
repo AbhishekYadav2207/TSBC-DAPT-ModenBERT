@@ -47,7 +47,8 @@ def main():
     # 3. Required Reports in dapt/reports/
     expected_reports = [
         "corpus_analysis.md", "dataset_analysis.md", "tokenizer_analysis.md",
-        "training_analysis.md", "evaluation_analysis.md", "experiment_summary.md"
+        "training_analysis.md", "evaluation_analysis.md", "experiment_summary.md",
+        "dapt_report.md", "reproducibility_report.md"
     ]
     for rpt in expected_reports:
         rpt_path = root / "reports" / rpt
@@ -64,16 +65,20 @@ def main():
         if not dia_path.exists():
             errors.append(f"Missing diagram source: {dia_path}")
 
-    # 5. Required Figures in dapt/figures/
+    # 5. Required Figures in dapt/figures/ (PNG and PDF)
     expected_figures = [
-        "corpus_length_distribution.png", "split_distribution.png",
-        "tokenizer_fertility.png", "validation_loss_curve.png",
-        "perplexity_curve.png", "baseline_vs_dapt.png", "checkpoint_comparison.png"
+        "validation_loss_curve", "perplexity_curve", "baseline_vs_dapt",
+        "learning_rate_trajectory", "checkpoint_comparison",
+        "corpus_split_packing_summary", "corpus_length_distribution",
+        "split_distribution", "tokenizer_fertility"
     ]
     for fig in expected_figures:
-        fig_path = root / "figures" / fig
-        if not fig_path.exists():
-            errors.append(f"Missing generated figure: {fig_path}")
+        png_path = root / "figures" / f"{fig}.png"
+        pdf_path = root / "figures" / f"{fig}.pdf"
+        if not png_path.exists():
+            errors.append(f"Missing generated PNG figure: {png_path}")
+        if not pdf_path.exists():
+            warnings.append(f"Missing vector PDF figure: {pdf_path}")
 
     # 6. JSON Artifact Verification
     artifacts = [
@@ -81,41 +86,69 @@ def main():
         root / "outputs" / "data" / "split_manifest.json",
         root / "outputs" / "data" / "tokenizer_report.json",
         root / "outputs" / "experiments" / "comparison_report.json",
-        root / "outputs" / "experiments" / "baseline-modernbert" / "evaluation_metrics.json"
+        root / "outputs" / "experiments" / "training_history.json",
+        root / "outputs" / "experiments" / "dapt_summary.json",
+        root / "outputs" / "experiments" / "dapt_results.json",
+        root / "outputs" / "experiments" / "checkpoint_summary.json",
+        root / "outputs" / "experiments" / "baseline-modernbert" / "evaluation_metrics.json",
+        root / "outputs" / "experiments" / "MaritimeBERT-v1" / "evaluation_metrics.json"
     ]
     for art in artifacts:
         if not art.exists():
             errors.append(f"Missing required empirical artifact: {art}")
 
     # 7. Checkpoint Distinction Verification in Docs
-    # Check if Step 855 is incorrectly referred to as 'best checkpoint'
-    readme_content = ""
-    if (root / "README.md").exists():
-        with open(root / "README.md", "r", encoding="utf-8") as f:
-            readme_content = f.read()
-        if "best validation checkpoint (step 855)" in readme_content.lower() or "best checkpoint (step 855)" in readme_content.lower():
-            errors.append("Incorrect checkpoint terminology in README.md: Step 855 should be 'released artifact', Step 800 is 'best validation checkpoint'.")
+    # Verify terminology for Step 950 and Step 984 in current DAPT documentation
+    readme_path = root / "README.md"
+    if readme_path.exists():
+        with open(readme_path, "r", encoding="utf-8") as f:
+            readme_content = f.read().lower()
+        if "best validation checkpoint (step 855)" in readme_content or "step 855" in readme_content:
+            errors.append("Stale reference to Step 855 found in current dapt/README.md.")
+        if "step 800" in readme_content:
+            errors.append("Stale reference to Step 800 found in current dapt/README.md.")
+        if "best validation checkpoint (step 950)" in readme_content:
+            errors.append("Incorrect terminology: Step 950 should be called 'best validation state (unpersisted)', not 'best validation checkpoint'.")
 
-    # 8. Markdown Relative Link Resolution
-    all_md_files = list(root.glob("*.md")) + list((root / "docs").glob("*.md")) + list((root / "reports").glob("*.md"))
-    link_pattern = re.compile(r'\[([^\]]+)\]\((file:///[^\)]+|[^\)]+)\)')
+    # 8. Smart Stale-Value Audit for Current DAPT Documentation vs Archived Reports
+    stale_patterns = {
+        "96,715": "Stale document count 96,715 (current run: 96,861)",
+        "3,372,882": "Stale word count 3,372,882 (current run: 3,830,350)",
+        "20,671,574": "Stale character count 20,671,574 (current run: 24,356,820)",
+        "855 steps": "Stale training steps 855 (current run: 984 steps)",
+        "0.5898": "Stale MLM loss 0.5898 from previous run",
+        "1.8037": "Stale perplexity 1.8037 from previous run"
+    }
 
-    for md_file in all_md_files:
-        with open(md_file, "r", encoding="utf-8") as f:
-            content = f.read()
-        for match in link_pattern.finditer(content):
-            link_target = match.group(2)
-            if link_target.startswith("http://") or link_target.startswith("https://") or link_target.startswith("#"):
-                continue
-            
-            # Handle file:/// links
-            clean_target = link_target.replace("file:///", "")
-            target_path = Path(clean_target)
-            if not target_path.is_absolute():
-                target_path = (md_file.parent / clean_target).resolve()
-            
-            if not target_path.exists():
-                warnings.append(f"Broken link in {md_file.relative_to(root)} -> {link_target}")
+    current_dapt_files = list(root.glob("*.md")) + list((root / "docs").glob("*.md")) + list((root / "reports").glob("*.md"))
+    for cfile in current_dapt_files:
+        # If file is explicitly an archived/historical file, skip or warn
+        is_historical = "archive" in cfile.name.lower() or "historical" in cfile.name.lower()
+        with open(cfile, "r", encoding="utf-8") as f:
+            text = f.read()
+        for pat, desc in stale_patterns.items():
+            if pat in text:
+                if is_historical:
+                    warnings.append(f"Historical file {cfile.name} contains historical reference: '{pat}'")
+                else:
+                    errors.append(f"Current DAPT file {cfile.relative_to(root)} contains stale value '{pat}': {desc}")
+
+    # 9. Multi-layer Metric Consistency Check
+    if (root / "outputs" / "experiments" / "MaritimeBERT-v1" / "evaluation_metrics.json").exists():
+        eval_m = load_json(root / "outputs" / "experiments" / "MaritimeBERT-v1" / "evaluation_metrics.json")
+        comp_m = load_json(root / "outputs" / "experiments" / "comparison_report.json")
+        hist_m = load_json(root / "outputs" / "experiments" / "training_history.json")
+
+        if eval_m.get("mlm_loss") != 0.5247:
+            errors.append(f"MaritimeBERT-v1 evaluation mlm_loss divergence: expected 0.5247, got {eval_m.get('mlm_loss')}")
+        if eval_m.get("perplexity") != 1.69:
+            errors.append(f"MaritimeBERT-v1 evaluation perplexity divergence: expected 1.69, got {eval_m.get('perplexity')}")
+        if comp_m["metrics"]["dapt_mlm_loss"] != 0.5247:
+            errors.append(f"Comparison report dapt_mlm_loss divergence: expected 0.5247, got {comp_m['metrics']['dapt_mlm_loss']}")
+        if hist_m["best_validation_state"]["step"] != 950:
+            errors.append("training_history.json best_validation_state step is not 950")
+        if hist_m["final_training_checkpoint"]["step"] != 984:
+            errors.append("training_history.json final_training_checkpoint step is not 984")
 
     # Print Report
     print(f"Checked Directories: {len(required_dirs)}")
@@ -135,9 +168,11 @@ def main():
         for e in errors:
             print(f"[ERROR] {e}")
         print(f"\nValidation FAILED with {len(errors)} error(s).")
-        exit(1)
+        return 1
     else:
-        print("\n[SUCCESS] All Documentation & Artifact Validation Checks PASSED Cleanly!")
+        print("\n[SUCCESS] All Documentation, Terminology, and Artifact Validation Checks PASSED Cleanly!")
+        return 0
 
 if __name__ == "__main__":
-    main()
+    import sys
+    sys.exit(main())

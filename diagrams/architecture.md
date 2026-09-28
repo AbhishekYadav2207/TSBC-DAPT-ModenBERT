@@ -21,7 +21,7 @@ flowchart TD
 
     subgraph Experiment Outputs ["Generated Outputs & Experiments"]
         Manifests["dapt/outputs/data/*.json (Manifests)"]
-        CheckpointsDir["dapt/checkpoints/ (Step 800 Best / Step 855)"]
+        CheckpointsDir["dapt/checkpoints/ (Step 950 Best State / Step 984 Final)"]
         ReleaseArtifact["dapt/outputs/experiments/MaritimeBERT-v1/"]
     end
 

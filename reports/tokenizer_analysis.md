@@ -1,26 +1,16 @@
-# Tokenizer Diagnostics Analysis Report
+# ModernBERT Tokenizer Diagnostic Report
 
-Derived directly from `dapt/outputs/data/tokenizer_report.json`.
+- **Tokenizer Identifier**: `answerdotai/ModernBERT-base`
+- **Vocabulary Size**: 50,368
+- **Boundary Token**: `[SEP]` (Token ID `50282`)
+- **Sample Document Evaluation**: 10,000 docs (363,690 words -> 592,330 subwords)
+- **Empirical Subword Fertility**: **1.6287 subwords/word**
+- **Out-of-Vocabulary (`[UNK]`) Rate**: **0.00%** (ModernBERT byte-level BPE ensures 100% token coverage)
 
----
-
-## 1. ModernBERT Tokenizer Statistics
-
-- **Base Tokenizer**: `answerdotai/ModernBERT-base`
-- **Vocabulary Size**: 50,368 tokens
-- **Resolved Boundary Token ID**: `50282` (`sep_token` / `[SEP]`)
-- **Subword Fertility Rate**: **1.6287 subwords per word**
-- **Unknown Token (`[UNK]`) Rate**: **0.0000%**
-
----
-
-## 2. Token Length Distribution
-
-- **Mean Sequence Tokens**: $49.13$
-- **Median (P50) Tokens**: $51.0$
-- **P90 Tokens**: $75.0$
-- **P95 Tokens**: $81.0$
-- **Max Single Document Tokens**: $102$
-- **Truncation Rate ($>512$ tokens)**: **0.00%**
-
-![Tokenizer Fertility & Length](file:///d:/CAIR/TSBC-Pipeline/dapt/figures/tokenizer_fertility.png)
+## Subword Token Statistics per Document
+- **Mean Tokens**: 59.23
+- **Median Tokens (P50)**: 54.0
+- **P90 Tokens**: 106.0
+- **P95 Tokens**: 114.0
+- **Max Single Document Tokens**: 145
+- **Truncation Rate at 512 Tokens**: **0.00%** (No narrative exceeds 512 subwords)

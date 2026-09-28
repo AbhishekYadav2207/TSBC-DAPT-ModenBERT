@@ -1,30 +1,11 @@
-# Evaluation & Baseline Gain Analysis Report
+# Held-Out Evaluation & Delta Gain Analysis
 
-Derived directly from `dapt/outputs/experiments/comparison_report.json` and checkpoint evaluation metrics.
+## Post-Training Baseline vs. Exported Model Evaluation (585 Packed Val Sequences)
+| Model | MLM Cross-Entropy Loss | Perplexity (PPL) | Delta vs Baseline |
+| :--- | :---: | :---: | :---: |
+| **`answerdotai/ModernBERT-base` (Baseline)** | 1.5365 | 4.6484 | — |
+| **`MaritimeBERT-v1` (Exported Model)** | 0.5247 | 1.6900 | **-1.0118 Loss (-65.85%) / -2.9584 PPL (-63.64%)** |
 
----
-
-## 1. Empirical Gain Summary
-
-| Model / Checkpoint | Step | MLM Loss | Perplexity | System Role |
-| :--- | :---: | :---: | :---: | :--- |
-| **`answerdotai/ModernBERT-base`** | — | `1.5271` | `4.6050` | Untouched Baseline Control |
-| **DAPT Best Validation Checkpoint** | **Step 800** | **`0.5898`** | **`1.8037`** | Min Validation Loss Checkpoint |
-| **MaritimeBERT-v1 Released Model** | **Step 855** | **`0.5912`** | **`1.8062`** | Final Released Model Export |
-
----
-
-## 2. Intrinsic Performance Gains ($\Delta$)
-
-$$\Delta \text{MLM Loss} = 1.5271 - 0.5912 = 0.9359 \quad (\mathbf{61.3\% \text{ Loss Reduction}})$$
-
-$$\Delta \text{Perplexity} = 4.6050 - 1.8062 = 2.7988 \quad (\mathbf{60.8\% \text{ Perplexity Reduction}})$$
-
-![Baseline vs DAPT](file:///d:/CAIR/TSBC-Pipeline/dapt/figures/baseline_vs_dapt.png)
-![Checkpoint Comparison](file:///d:/CAIR/TSBC-Pipeline/dapt/figures/checkpoint_comparison.png)
-
----
-
-## 3. Scientific Scope Boundary Reminder
-
-> These are intrinsic held-out MLM improvements. They demonstrate significantly improved language modeling of maritime text under the self-supervised MLM objective. They **do not establish downstream NER, classification, QA, retrieval, or RAG superiority without task-specific fine-tuning.**
+## In-Training Validation Trajectory Minimum
+- **Best Validation State (Step 950)**: MLM Loss: 0.4991, Perplexity: 1.6473 (Unpersisted state)
+- **Final Training Step (Step 984)**: MLM Loss: 0.5151, Perplexity: 1.6739 (Persisted checkpoint)

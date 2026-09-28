@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MaritimeBERT DAPT Technical Report</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; max-width: 960px; margin: 40px auto; padding: 0 20px; }
+h1, h2, h3 { color: #1b365d; border-bottom: 1px solid #eaecef; padding-bottom: 8px; }
+table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+th, td { border: 1px solid #dfe2e5; padding: 8px 12px; text-align: left; }
+th { background-color: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) { background-color: #fbfcfd; }
+.badge { display: inline-block; padding: 2px 8px; font-size: 12px; font-weight: bold; border-radius: 4px; color: #fff; }
+.badge-best { background-color: #28a745; }
+.badge-chk { background-color: #007bff; }
+.badge-alert { background-color: #d73a49; }
+.alert { background-color: #fffbdd; border: 1px solid #d1a153; border-radius: 6px; padding: 16px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<h1>MaritimeBERT Domain-Adaptive Pretraining (DAPT) - Technical Report</h1>
+<p><strong>Model:</strong> MaritimeBERT-v1 | <strong>Base:</strong> answerdotai/ModernBERT-base (149M params) | <strong>Status:</strong> Validated</p>
+<hr>
+<h2>1. Executive Summary</h2>
+<p>DAPT achieved a <strong>65.85% reduction in held-out MLM loss</strong> (1.5365 &rarr; 0.5247) and a <strong>63.64% reduction in held-out perplexity</strong> (4.6484 &rarr; 1.6900) on 585 validation sequences (299,199 tokens) from TSBC maritime occurrence narratives.</p>
+
+<h3>Core Model States</h3>
+<table>
+<tr><th>Model / State</th><th>Step</th><th>MLM Loss</th><th>Perplexity</th><th>Persisted?</th><th>Status</th></tr>
+<tr><td>ModernBERT-base Baseline</td><td>0</td><td>1.5365</td><td>4.6484</td><td>Yes</td><td>Pretrained control</td></tr>
+<tr><td><strong>Best validation state</strong></td><td>950</td><td>0.4991</td><td>1.6473</td><td><span class="badge badge-alert">NO</span></td><td>In-training minimum loss; not saved (save_steps=100)</td></tr>
+<tr><td><strong>Final training checkpoint</strong></td><td>984</td><td>0.5151</td><td>1.6739</td><td><span class="badge badge-chk">YES</span></td><td>Persisted in checkpoint-984 & best/</td></tr>
+<tr><td><strong>Released MaritimeBERT-v1</strong></td><td>984</td><td>0.5247*</td><td>1.6900*</td><td><span class="badge badge-best">YES</span></td><td>Exported model evaluated post-training</td></tr>
+</table>
+<p><em>* Post-training evaluation on held-out validation set.</em></p>
+
+<h2>2. Post-Training Baseline Comparison</h2>
+<table>
+<tr><th>Metric</th><th>ModernBERT Baseline</th><th>MaritimeBERT-v1</th><th>Delta</th><th>Relative Improvement</th></tr>
+<tr><td>Held-Out MLM Loss</td><td>1.5365</td><td>0.5247</td><td>-1.0118</td><td><strong>65.85% loss reduction</strong></td></tr>
+<tr><td>Held-Out Perplexity</td><td>4.6484</td><td>1.6900</td><td>-2.9584</td><td><strong>63.64% perplexity reduction</strong></td></tr>
+</table>
+
+<h2>3. Dataset & Packing Summary</h2>
+<ul>
+<li><strong>Corpus:</strong> 96,861 documents (3,830,350 words, 24,356,820 characters)</li>
+<li><strong>Deterministic Splits:</strong> 87,174 Train (90%) / 4,843 Val (5%) / 4,844 Test (5%)</li>
+<li><strong>Sequence Packing:</strong> 10,484 train sequences (99.99% efficiency), 585 val sequences (99.89% efficiency)</li>
+<li><strong>Training:</strong> 984 steps, 3 full epochs, effective batch size 32 (16,384 tokens/step)</li>
+</ul>
+</body>
+</html>

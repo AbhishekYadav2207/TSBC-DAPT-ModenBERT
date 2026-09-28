@@ -7,10 +7,12 @@ This document provides a step-by-step reproduction protocol to recreate all empi
 ## 1. Reproducibility Parameters
 
 - **Random Seed**: `42` enforced across PyTorch, NumPy, and Python standard random module.
-- **Corpus SHA-256 Hash Lock**: `b4968819f8b41baa3ee2e2b0e22d103b5d86f5935275a377db51d09ecde3b302`
+- **Corpus SHA-256 Hash Lock**: `852fea9a1d756a6989fd55f40646fd7e92ef7597baa4ada36d450e7e8acb6e11`
 - **Base Foundation Model**: `answerdotai/ModernBERT-base`
-- **PyTorch Version**: `torch >= 2.0.0`
-- **Transformers Version**: `transformers >= 4.40.0`
+- **PyTorch Version**: `2.11.0+cu128`
+- **Transformers Version**: `5.16.1`
+- **Datasets Version**: `4.8.5`
+- **GPU Accelerator**: Tesla T4 (15.6 GB)
 
 ---
 
@@ -21,7 +23,7 @@ This document provides a step-by-step reproduction protocol to recreate all empi
 cd /path/to/TSBC-Pipeline
 
 # Step 2: Install DAPT requirements
-pip install -r dapt/requirements.txt
+pip install -r requirements.txt
 
 # Step 3: Ingest Corpus & Generate SHA-256 Lock Manifest
 python dapt/scripts/inspect_corpus.py --config dapt/configs/dapt.yaml
@@ -38,17 +40,19 @@ python dapt/scripts/validate_dataset.py --config dapt/configs/dapt.yaml
 # Step 7: Evaluate Untouched ModernBERT Baseline
 python dapt/scripts/evaluate_dapt.py --config dapt/configs/dapt.yaml --is-baseline --eval-split validation
 
-# Step 8: Execute ModernBERT DAPT Training (855 steps)
+# Step 8: Execute ModernBERT DAPT Training (984 steps)
 python dapt/scripts/train_dapt.py --config dapt/configs/dapt.yaml
 
-# Step 9: Evaluate Trained Model Artifact
+# Step 9: Evaluate Trained Model Artifact (MaritimeBERT-v1)
 python dapt/scripts/evaluate_dapt.py --config dapt/configs/dapt.yaml --eval-split validation
 
 # Step 10: Compute Metric Deltas
 python dapt/scripts/compare_runs.py
 
-# Step 11: Generate Charts & Run Documentation Validation
+# Step 11: Parse Full Training History & Generate Charts & Reports
+python dapt/scripts/parse_training_history.py
 python dapt/scripts/generate_figures.py
+python dapt/scripts/generate_reports.py
 python dapt/scripts/validate_documentation.py
 pytest dapt/tests/
 ```

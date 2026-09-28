@@ -48,9 +48,9 @@ dapt/
 ├── docs/                     # 14 technical documentation pages
 ├── reports/                  # 6 empirical analysis reports
 ├── diagrams/                 # Architectural workflow diagrams
-├── figures/                  # 7 dynamically generated PNG visualization charts
-├── outputs/                  # Split datasets & experiment manifests
-├── checkpoints/              # Checkpoint directories (Step 800 Best / Step 855 Export)
+├── figures/                  # Dynamically generated PNG and vector PDF visualization charts
+├── outputs/                  # Split datasets, experiment manifests & reports
+├── checkpoints/              # Checkpoint directories (Step 984 Final Checkpoint / checkpoints/best)
 └── tests/                    # PyTest test suite
 ```
 

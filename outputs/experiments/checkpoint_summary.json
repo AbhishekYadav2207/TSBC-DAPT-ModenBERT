@@ -1,0 +1,35 @@
+{
+  "best_validation_state": {
+    "step": 950,
+    "epoch": 3,
+    "mlm_loss": 0.4991,
+    "perplexity": 1.6473,
+    "persisted": false,
+    "directory": null,
+    "status": "Observed empirical minimum loss state during training; not serialized to disk because save_steps=100"
+  },
+  "final_training_checkpoint": {
+    "step": 984,
+    "epoch": 3,
+    "in_training_mlm_loss": 0.5151,
+    "in_training_perplexity": 1.6739,
+    "persisted": true,
+    "directory": "dapt/checkpoints/checkpoint-984",
+    "best_symlink_or_copy": "dapt/checkpoints/best",
+    "status": "Final step checkpoint; saved to disk and copied to best/"
+  },
+  "exported_model": {
+    "name": "MaritimeBERT-v1",
+    "source_step": 984,
+    "directory": "dapt/outputs/experiments/MaritimeBERT-v1",
+    "post_training_mlm_loss": 0.5247,
+    "post_training_perplexity": 1.69,
+    "status": "Exported model weights originating from Step 984; evaluated post-training on held-out validation set"
+  },
+  "checkpoint_audit_resolution": {
+    "inconsistency_found": "The training log recorded 'Updated best checkpoint link' after step 984 despite step 950 having lower validation loss (0.4991 vs 0.5151).",
+    "code_root_cause": "In dapt/src/training.py lines 218-225, post-loop logic unconditionally called save_checkpoint(step=global_step, is_best=True), copying step 984 into checkpoints/best. Additionally, save_steps=100 prevented step 950 from being saved to disk.",
+    "active_export_origin": "The exported MaritimeBERT-v1 weights correspond strictly to the final Step 984 checkpoint.",
+    "correct_terminology": "Step 950 must be referred to as 'Best validation state (unpersisted)', Step 984 as 'Final training checkpoint (persisted)', and MaritimeBERT-v1 as 'Exported model (Step 984)'."
+  }
+}

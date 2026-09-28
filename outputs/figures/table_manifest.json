@@ -1,0 +1,44 @@
+{
+  "tables": [
+    {
+      "id": "table_1",
+      "title": "DAPT Configuration and Hyperparameters",
+      "location": "dapt/reports/dapt_report.md#table-1"
+    },
+    {
+      "id": "table_2",
+      "title": "Maritime Corpus Provenance and Deterministic Splits",
+      "location": "dapt/reports/dapt_report.md#table-2"
+    },
+    {
+      "id": "table_3",
+      "title": "Sequence Packing and Boundary Efficiency",
+      "location": "dapt/reports/dapt_report.md#table-3"
+    },
+    {
+      "id": "table_4",
+      "title": "Complete 20-Point Held-Out Validation Trajectory",
+      "location": "dapt/reports/dapt_report.md#table-4"
+    },
+    {
+      "id": "table_5",
+      "title": "Model State & Checkpoint Distinction Table",
+      "location": "dapt/reports/dapt_report.md#table-5"
+    },
+    {
+      "id": "table_6",
+      "title": "Post-Training Baseline vs. Exported MaritimeBERT-v1 Comparison",
+      "location": "dapt/reports/dapt_report.md#table-6"
+    },
+    {
+      "id": "table_7",
+      "title": "System Environment and Reproducibility Specifications",
+      "location": "dapt/reports/dapt_report.md#table-7"
+    },
+    {
+      "id": "table_8",
+      "title": "Empirical Artifact Inventory and SHA-256 Checksums",
+      "location": "dapt/reports/dapt_report.md#table-8"
+    }
+  ]
+}

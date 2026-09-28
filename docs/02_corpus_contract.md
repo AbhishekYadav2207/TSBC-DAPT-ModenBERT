@@ -13,14 +13,14 @@ $$\text{Corpus File Path: } \texttt{outputs/maritime\_corpus.txt}$$
 ### Cryptographic SHA-256 Hash Lock
 Before any dataset preparation or training occurs, `dapt/src/corpus.py` computes the SHA-256 hash of `outputs/maritime_corpus.txt`:
 
-$$\text{SHA-256 Lock: } \texttt{b4968819f8b41baa3ee2e2b0e22d103b5d86f5935275a377db51d09ecde3b302}$$
+$$\text{SHA-256 Lock: } \texttt{852fea9a1d756a6989fd55f40646fd7e92ef7597baa4ada36d450e7e8acb6e11}$$
 
 ```text
 Upstream Frozen Corpus
           │
   outputs/maritime_corpus.txt
           │
-  SHA-256 Verification (b4968819f8b41baa3ee2e2b0e22d103b5d86f5935275a377db51d09ecde3b302)
+  SHA-256 Verification (852fea9a1d756a6989fd55f40646fd7e92ef7597baa4ada36d450e7e8acb6e11)
           │
   Corpus Manifest (corpus_manifest.json)
           │
@@ -28,13 +28,11 @@ Upstream Frozen Corpus
           │
   Tokenization + Document Packing (tokenizer_report.json)
           │
-  ModernBERT 15% Bernoulli MLM Pre-Training
+  ModernBERT 15% Bernoulli MLM Pre-Training (984 steps)
           │
-  Validation & Checkpoint Rotation
+  Validation & Checkpoint Rotation (Step 950 best state / Step 984 final checkpoint)
           │
-  Final Held-Out Test & Comparison
-          │
-  MaritimeBERT-v1 Export
+  MaritimeBERT-v1 Export & Held-Out Comparison
 ```
 
 ---
@@ -54,15 +52,11 @@ Derived directly from `dapt/outputs/data/corpus_manifest.json`:
 
 | Property | Value |
 | :--- | :--- |
-| **Total Documents** | **96,715** |
-| **Total Words** | **3,372,882** |
-| **Total Characters** | **20,671,574** |
-| **Unique Vocabulary (Space-Separated)** | **80,174** |
-| **Exact Duplicate Lines** | **0** ($0.0\%$) |
-| **Mean Word Count** | **34.87** words ($\text{Std} = 15.53$) |
-| **Median Word Count** | **37.0** words (P25: 26.0, P75: 45.0, P95: 55.0) |
-
-### Quality Caveats (Preserved in Manifest)
-- **Template Scaffolding Ratio**: $66.42\%$ boilerplate scaffolding tokens vs $33.58\%$ domain-derived content tokens.
-- **Scaffold-Reduced Near-Duplicate Rate**: $20.58\%$ near-duplicate sentence structures.
-- **Pretraining Readiness**: `NEEDS IMPROVEMENT` (noted as an inherent property of historical maritime logs).
+| **Total Documents** | **96,861** |
+| **Total Words** | **3,830,350** |
+| **Total Characters** | **24,356,820** |
+| **Unique Vocabulary (Space-Separated)** | **80,333** |
+| **Exact Duplicate Documents** | **0** ($0.0\%$) |
+| **Mean Word Count** | **39.54** words ($\text{Std} = 20.80$) |
+| **Median Word Count** | **38.0** words (P25: 26.0, P75: 52.0, P95: 75.0) |
+| **Max Word Count** | **514** words |

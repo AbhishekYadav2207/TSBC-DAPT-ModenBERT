@@ -36,10 +36,15 @@ $$\text{Effective Batch Size} = B_{\text{micro}} \times K_{\text{accum}} = 8 \ti
 
 $$\mathbf{g}_{\text{acc}} = \frac{1}{4} \sum_{k=1}^4 \nabla_\theta \mathcal{L}_k$$
 
+Total target steps for 3 full epochs over 10,484 sequences:
+
+$$\text{Target Steps} = \left\lceil \frac{10,484 \times 3}{32} \right\rceil = 984 \text{ steps}$$
+
 ---
 
 ## 4. Optimizer & Scheduler Configuration
 
 - **Optimizer**: `AdamW` ($\beta_1 = 0.9, \beta_2 = 0.999, \epsilon = 10^{-8}, \lambda = 0.01$)
 - **Base Learning Rate**: $\eta = 5.0 \times 10^{-5}$
-- **Warmup Schedule**: Linear warmup over $6\%$ of total steps (~51 steps), followed by linear decay to $0.0$.
+- **Warmup Schedule**: Linear warmup over $6\%$ of total steps (59 steps), followed by linear decay to $0.0$ at terminal step 984.
+- **Hardware Acceleration**: Tesla T4 GPU with automatic device placement, processing ~2,416 tokens/sec (~4.7 samples/sec).
